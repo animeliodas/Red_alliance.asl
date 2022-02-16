@@ -19,3 +19,10 @@ split
 
 	
 }
+start
+{
+
+	return current.lvl > old.lvl;
+
+	
+}
