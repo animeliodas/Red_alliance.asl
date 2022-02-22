@@ -4,6 +4,10 @@ state("Red Alliance")
 	int loadingg : "mono.dll", 0x001F9BD0, 0xA4, 0x4, 0xC, 0xD8;
 	int lvl : "UnityPlayer.dll", 0x00FD9174, 0x68, 0x0;
 }
+init
+{
+	timer.IsGameTimePaused = false;
+}
 
 isLoading
 {
@@ -24,4 +28,8 @@ start
 
 		return current.lvl > old.lvl;
 
+}
+exit
+{
+    timer.IsGameTimePaused = true;
 }
