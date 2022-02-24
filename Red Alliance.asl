@@ -19,12 +19,14 @@ isLoading
 	{
 		return false;
 	}
+
+
 }
 reset
 {
-	if (current.loadingg == 0)
+	if (current.loading == 0)
 	{
-	if (current.ismenu != 1)
+	if (current.ismenu != 1 & current.lvl > old.lvl)
 		return true;
 	}
 }
@@ -32,6 +34,7 @@ split
 {
 	if (current.ismenu != 0)
 	return current.lvl > old.lvl;
+	
 	
 }
 start
