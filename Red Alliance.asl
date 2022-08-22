@@ -1,9 +1,7 @@
 state("Red Alliance")
 {
-	int loading : "UnityPlayer.dll", 0x00FEA8F0, 0x20;
-	int loadingg : "mono.dll", 0x001F9BD0, 0xA4, 0x4, 0xC, 0xD8;
-	int lvl : "UnityPlayer.dll", 0x00FD9174, 0x68, 0x0;
-	int ismenu : "UnityPlayer.dll" , 0x00FE9314, 0x18;
+	int loading : "mono.dll", 0x001F795C, 0xC0, 0x98, 0x50, 0x430, 0x24;
+	int lvl : "UnityPlayer.dll", 0x00FE0320, 0x44, 0xDC, 0x100, 0x24, 0xFE0;
 }
 init
 {
@@ -12,7 +10,7 @@ init
 
 isLoading
 {
-	if( current.loading == 1 | current.loadingg == 1 | current.ismenu == 0)
+	if( current.loading == 1)
 	{
 		return true;
 	}
@@ -24,26 +22,22 @@ isLoading
 }
 reset
 {
-	if (current.loading == 0)
-	{
-	if (current.ismenu != 1 & current.lvl > old.lvl)
-		return true;
-	}
+	if (current.lvl == 1)
+		{
+			return true;
+		}
 }
 split
 {
-	if (current.ismenu != 0)
+
 	return current.lvl > old.lvl;
-	
 	
 }
 start
 {
-	if (current.ismenu != 0)
-	{
-		return current.lvl > old.lvl;
-
-	}
+	if (current.lvl == 6 | current.lvl == 2)
+		return true;
+	
 }
 exit
 {
